@@ -28,7 +28,7 @@ import re
 
 
 NBVIEWER = "https://nbviewer.jupyter.org/github"
-GITHUB_ORG = "SalishSeaCast"
+GITHUB_ORG = "UBC-MOAD"
 REPO_NAME = "Analysis-Aline"
 TITLE_PATTERN = re.compile("#{1,6} ?")
 
