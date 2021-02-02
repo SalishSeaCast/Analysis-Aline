@@ -1,21 +1,21 @@
+The Jupyter Notebooks in this directory are made by
+Aline Isabelle for sharing of Python code techniques
+and notes.
+
 The links below are to static renderings of the notebooks via
 [nbviewer.jupyter.org](https://nbviewer.jupyter.org/).
-Descriptions under the links below are from the first cell of the notebooks
+Descriptions below the links are from the first cell of the notebooks
 (if that cell contains Markdown or raw text).
 
-* ## [2015_S3_PhytoBloomTiming.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/master/notebooks/2015_S3_PhytoBloomTiming.ipynb)  
-    
-    **Time series of spring phytoplankton bloom and model forcing at station S3 from Feb 15th - June 15th 2015**
-
-* ## [FirstNotebook.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/master/notebooks/FirstNotebook.ipynb)  
+* ## [FirstNotebook.ipynb](https://nbviewer.jupyter.org/github/UBC-MOAD/Analysis-Aline/blob/master/notebooks/FirstNotebook.ipynb)  
     
 
-##License
+## License
 
-These notebooks and files are copyright 2013-2021
-by the Salish Sea MEOPAR Project Contributors
+These notebooks and files are copyright by the
+[UBC EOAS MOAD Group](https://github.com/UBC-MOAD/docs/blob/master/CONTRIBUTORS.rst)
 and The University of British Columbia.
 
 They are licensed under the Apache License, Version 2.0.
-https://www.apache.org/licenses/LICENSE-2.0
-Please see the LICENSE file for details of the license.
+http://www.apache.org/licenses/LICENSE-2.0
+Please see the LICENSE file in this repository for details of the license.
