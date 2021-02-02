@@ -1,72 +1,61 @@
-# Copyright by the UBC EOAS MOAD Group and The University of British Columbia.
-#
+#Copyright 2013-2016 The Salish Sea MEOPAR contributors
+# and The University of British Columbia
+
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
-#
-#    http://www.apache.org/licenses/LICENSE-2.0
-#
+
+#    https://www.apache.org/licenses/LICENSE-2.0
+
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""Jupyter Notebook collection README generator
 
-When you add a new notebook to this directory,
-rename a notebook,
-or change the description of a notebook in its first Markdown cell,
-please generate a updated `README.md` file with:
-
-    python3 -m make_readme
-
-and commit and push the updated `README.md` to GitHub.
+"""Salish Sea NEMO Jupyter Notebook collection README generator
 """
+import datetime
+import glob
 import json
-from pathlib import Path
+import os
 import re
+import sys
 
+NBVIEWER = 'https://nbviewer.jupyter.org/github'
+REPO = 'SalishSeaCast/Analysis-Aline/blob/main'
+#REPO_DIR_BASE = 'notebooks'
+TITLE_PATTERN = re.compile('#{1,6} ?')
 
-NBVIEWER = "https://nbviewer.jupyter.org/github"
-GITHUB_ORG = "UBC-MOAD"
-REPO_NAME = "Analysis-Aline"
-TITLE_PATTERN = re.compile("#{1,6} ?")
-
-
-def main():
-    url = f"{NBVIEWER}/{GITHUB_ORG}/{REPO_NAME}/blob/master/{Path.cwd().name}"
-
+def main(REPO_DIR):
+    url = f"{NBVIEWER}/{REPO}/{REPO_DIR}"
     readme = """\
-The Jupyter Notebooks in this directory are made by
-Aline Isabelle for sharing of Python code techniques
-and notes.
-
 The links below are to static renderings of the notebooks via
 [nbviewer.jupyter.org](https://nbviewer.jupyter.org/).
-Descriptions below the links are from the first cell of the notebooks
+Descriptions under the links below are from the first cell of the notebooks
 (if that cell contains Markdown or raw text).
 
 """
-    for fn in Path(".").glob("*.ipynb"):
-        readme += f"* ## [{fn}]({url}/{fn})  \n    \n"
-        readme += notebook_description(fn)
+    fnlist=glob.glob('*.ipynb')
+    fnlist.sort()
+    if len(fnlist)>0:
+        for fn in fnlist:
+            readme += f"* ## [{fn}]({url}/{fn})  \n    \n"
+            readme += notebook_description(fn)
+    license = """
+##License
 
-    license = f"""
-## License
-
-These notebooks and files are copyright by the
-[UBC EOAS MOAD Group](https://github.com/UBC-MOAD/docs/blob/master/CONTRIBUTORS.rst)
+These notebooks and files are copyright 2013-{this_year}
+by the Salish Sea MEOPAR Project Contributors
 and The University of British Columbia.
 
 They are licensed under the Apache License, Version 2.0.
-http://www.apache.org/licenses/LICENSE-2.0
-Please see the LICENSE file in this repository for details of the license.
-"""
-
-    with open("README.md", "wt") as f:
+https://www.apache.org/licenses/LICENSE-2.0
+Please see the LICENSE file for details of the license.
+""".format(this_year=datetime.date.today().year)
+    with open('README.md', 'wt') as f:
         f.writelines(readme)
         f.writelines(license)
-
 
 def notebook_description(fn):
     description = ""
@@ -92,6 +81,12 @@ def notebook_description(fn):
     description += "\n" * 2
     return description
 
-
-if __name__ == "__main__":
-    main()
+if __name__ == '__main__':
+    startdir=os.getcwd()
+    for root, dirs, files in os.walk(startdir,topdown=True):
+        rootend=re.split('/',root)[-1]
+        if re.match('[a-zA-Z0-9]',rootend):
+            os.chdir(root)
+            REPODIR=re.split('Analysis-Aline/',root)[-1]
+            main(REPODIR)
+    os.chdir(startdir)

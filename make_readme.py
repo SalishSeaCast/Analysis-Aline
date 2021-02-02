@@ -23,7 +23,7 @@ import re
 import sys
 
 NBVIEWER = 'https://nbviewer.jupyter.org/github'
-REPO = 'SalishSeaCast/Analysis-Aline/blob/master'
+REPO = 'SalishSeaCast/Analysis-Aline/blob/main'
 #REPO_DIR_BASE = 'notebooks'
 TITLE_PATTERN = re.compile('#{1,6} ?')
 
