@@ -104,3 +104,64 @@ def metric3_bloomtime(sphyto,sno3,bio_time):
             print('bloom not found')
 
     return bloomtime3
+
+# wind speed cubed
+def janfebmar_wspeed3(twind,wspeed):
+    dfwind=pd.DataFrame({'twind':twind, 'wspeed':wspeed})
+    monthlyws=pd.DataFrame(dfwind.resample('M', on='twind').wspeed.mean())
+    monthlyws.reset_index(inplace=True)
+    jan_ws3=(monthlyws.iloc[0]['wspeed'])**3
+    feb_ws3=(monthlyws.iloc[1]['wspeed'])**3
+    mar_ws3=(monthlyws.iloc[2]['wspeed'])**3
+    return jan_ws3, feb_ws3, mar_ws3
+
+# surface irradiance:
+def janfebmar_irradiance(twind,solar):
+    dfsolar=pd.DataFrame({'twind':twind, 'solar':solar})
+    monthlysolar=pd.DataFrame(dfsolar.resample('M', on='twind').solar.mean())
+    monthlysolar.reset_index(inplace=True)
+    jan_solar=monthlysolar.iloc[0]['solar']
+    feb_solar=monthlysolar.iloc[1]['solar']
+    mar_solar=monthlysolar.iloc[2]['solar']
+    return jan_solar, feb_solar, mar_solar
+
+# surface PAR:
+def janfebmar_spar(bio_time,spar):
+    dfspar=pd.DataFrame({'bio_time':bio_time, 'spar':spar})
+    monthlyspar=pd.DataFrame(dfspar.resample('M', on='bio_time').spar.mean())
+    monthlyspar.reset_index(inplace=True)
+    jan_spar=monthlyspar.iloc[0]['spar']
+    feb_spar=monthlyspar.iloc[1]['spar']
+    mar_spar=monthlyspar.iloc[2]['spar']
+    return jan_spar, feb_spar, mar_spar
+
+#surface temperature:
+def janfebmar_temp(grid_time,temp):
+    dftemp=pd.DataFrame({'grid_time':grid_time, 'temp':temp})
+    monthlytemp=pd.DataFrame(dftemp.resample('M', on='grid_time').temp.mean())
+    monthlytemp.reset_index(inplace=True)
+    jan_temp=monthlytemp.iloc[0]['temp']
+    feb_temp=monthlytemp.iloc[1]['temp']
+    mar_temp=monthlytemp.iloc[2]['temp']
+    return jan_temp, feb_temp, mar_temp
+
+# surface salinity:
+def janfebmar_temp(grid_time,salinity):
+    dfsal=pd.DataFrame({'grid_time':grid_time, 'sal':salinity})
+    monthlysal=pd.DataFrame(dfsal.resample('M', on='grid_time').sal.mean())
+    monthlysal.reset_index(inplace=True)
+    jan_sal=monthlysal.iloc[0]['sal']
+    feb_sal=monthlysal.iloc[1]['sal']
+    mar_sal=monthlysal.iloc[2]['sal']
+    return jan_sal, feb_sal, mar_sal
+
+# Fraser river:
+def janfebmar_fraserflow(riv_time,rivFlow):
+    dfrivFlow=pd.DataFrame({'riv_time':riv_time, 'rivFlow':rivFlow})
+    dfrivFlow["riv_time"] = pd.to_datetime(dfrivFlow["riv_time"])
+    monthlyrivFlow=pd.DataFrame(dfrivFlow.resample('M', on='riv_time').rivFlow.mean())
+    monthlyrivFlow.reset_index(inplace=True)
+    jan_rivFlow=monthlyrivFlow.iloc[0]['rivFlow']
+    feb_rivFlow=monthlyrivFlow.iloc[1]['rivFlow']
+    mar_rivFlow=monthlyrivFlow.iloc[2]['rivFlow']
+    return jan_rivFlow, feb_rivFlow, mar_rivFlow
