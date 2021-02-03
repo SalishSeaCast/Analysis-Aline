@@ -155,7 +155,7 @@ def janfebmar_temp(grid_time,salinity):
     mar_sal=monthlysal.iloc[2]['sal']
     return jan_sal, feb_sal, mar_sal
 
-# Fraser river:
+# Fraser river flow:
 def janfebmar_fraserflow(riv_time,rivFlow):
     dfrivFlow=pd.DataFrame({'riv_time':riv_time, 'rivFlow':rivFlow})
     dfrivFlow["riv_time"] = pd.to_datetime(dfrivFlow["riv_time"])
@@ -165,3 +165,15 @@ def janfebmar_fraserflow(riv_time,rivFlow):
     feb_rivFlow=monthlyrivFlow.iloc[1]['rivFlow']
     mar_rivFlow=monthlyrivFlow.iloc[2]['rivFlow']
     return jan_rivFlow, feb_rivFlow, mar_rivFlow
+
+# surface zooplankton concentration:
+def janfebmar_zooplankton(bio_time,zoop):
+    dzoop=pd.DataFrame(zoop)
+    szoop=np.array(dzoop[[0]]).flatten()
+    dfzoop=pd.DataFrame({'bio_time':bio_time, 'zoop':szoop})
+    monthlyzoop=pd.DataFrame(dfzoop.resample('M', on='bio_time').zoop.mean())
+    monthlyzoop.reset_index(inplace=True)
+    jan_zoop=monthlyzoop.iloc[0]['zoop']
+    feb_zoop=monthlyzoop.iloc[1]['zoop']
+    mar_zoop=monthlyzoop.iloc[2]['zoop']
+    return jan_zoop, feb_zoop, mar_zoop
