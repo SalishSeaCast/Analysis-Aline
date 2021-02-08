@@ -15,14 +15,24 @@ Descriptions under the links below are from the first cell of the notebooks
     
     **Time series of spring phytoplankton bloom and model forcing at station S3 from Feb 15th - June 15th 2017**
 
+* ## [201812EnvironmentalDrivers.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/main/notebooks/Bloom_Timing/201812EnvironmentalDrivers.ipynb)  
+    
 * ## [2018_S3_PhytoBloomTiming.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/main/notebooks/Bloom_Timing/2018_S3_PhytoBloomTiming.ipynb)  
     
     **Time series of spring phytoplankton bloom and model forcing at station S3 from Feb 15th - June 15th 2018**
 
+* ## [201905EnvironmentalDrivers-Copy1.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/main/notebooks/Bloom_Timing/201905EnvironmentalDrivers-Copy1.ipynb)  
+    
 * ## [2019_S3_PhytoBloomTiming.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/main/notebooks/Bloom_Timing/2019_S3_PhytoBloomTiming.ipynb)  
     
     **Time series of spring phytoplankton bloom and model forcing at station S3 from Feb 15th - June 15th 2019**
 
+* ## [Bloomdate_timeseries.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/main/notebooks/Bloom_Timing/Bloomdate_timeseries.ipynb)  
+    
+    **Time series of phytoplankton bloom dates from 2015-2019 at station S3**
+
+* ## [CopyEnvironmentalDrivers.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/main/notebooks/Bloom_Timing/CopyEnvironmentalDrivers.ipynb)  
+    
 
 ##License
 
