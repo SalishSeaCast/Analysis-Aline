@@ -17,6 +17,8 @@ Descriptions under the links below are from the first cell of the notebooks
 
 * ## [201812EnvironmentalDrivers.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/main/notebooks/Bloom_Timing/201812EnvironmentalDrivers.ipynb)  
     
+    **Time Series of Phytoplankton Bloom Timing and Environmental Drivers from 2015-2019 at Station S3 (201812 model run)**
+
 * ## [2018_S3_PhytoBloomTiming.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/main/notebooks/Bloom_Timing/2018_S3_PhytoBloomTiming.ipynb)  
     
     **Time series of spring phytoplankton bloom and model forcing at station S3 from Feb 15th - June 15th 2018**
