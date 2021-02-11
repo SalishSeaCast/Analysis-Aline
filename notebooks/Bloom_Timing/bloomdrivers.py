@@ -167,8 +167,8 @@ def janfebmar_fraserflow(riv_time,rivFlow):
     return jan_rivFlow, feb_rivFlow, mar_rivFlow
 
 # surface zooplankton concentration:
-def janfebmar_zooplankton(bio_time,zoop):
-    dzoop=pd.DataFrame(zoop)
+def janfebmar_zooplankton(bio_time,zoop_alld):
+    dzoop=pd.DataFrame(zoop_alld)
     szoop=np.array(dzoop[[0]]).flatten()
     dfzoop=pd.DataFrame({'bio_time':bio_time, 'zoop':szoop})
     monthlyzoop=pd.DataFrame(dfzoop.resample('M', on='bio_time').zoop.mean())
@@ -177,3 +177,67 @@ def janfebmar_zooplankton(bio_time,zoop):
     feb_zoop=monthlyzoop.iloc[1]['zoop']
     mar_zoop=monthlyzoop.iloc[2]['zoop']
     return jan_zoop, feb_zoop, mar_zoop
+
+# surface mesozooplankton concentration:
+def janfebmar_mesozooplankton(bio_time,mesozoo_alld):
+    dzoop=pd.DataFrame(mesozoo_alld)
+    szoop=np.array(dzoop[[0]]).flatten()
+    dfzoop=pd.DataFrame({'bio_time':bio_time, 'zoop':szoop})
+    monthlyzoop=pd.DataFrame(dfzoop.resample('M', on='bio_time').zoop.mean())
+    monthlyzoop.reset_index(inplace=True)
+    jan_zoop=monthlyzoop.iloc[0]['zoop']
+    feb_zoop=monthlyzoop.iloc[1]['zoop']
+    mar_zoop=monthlyzoop.iloc[2]['zoop']
+    return jan_zoop, feb_zoop, mar_zoop
+
+# surface microzooplankton concentration:
+def janfebmar_microzooplankton(bio_time,microzoo_alld):
+    dzoop=pd.DataFrame(microzoo_alld)
+    szoop=np.array(dzoop[[0]]).flatten()
+    dfzoop=pd.DataFrame({'bio_time':bio_time, 'zoop':szoop})
+    monthlyzoop=pd.DataFrame(dfzoop.resample('M', on='bio_time').zoop.mean())
+    monthlyzoop.reset_index(inplace=True)
+    jan_zoop=monthlyzoop.iloc[0]['zoop']
+    feb_zoop=monthlyzoop.iloc[1]['zoop']
+    mar_zoop=monthlyzoop.iloc[2]['zoop']
+    return jan_zoop, feb_zoop, mar_zoop
+
+# depth integrated zooplankton concentration:
+def janfebmar_depth_intzoop(bio_time,intzoop):
+    dfzoop=pd.DataFrame({'bio_time':bio_time, 'intzoop':intzoop})
+    monthlyzoop=pd.DataFrame(dfzoop.resample('M', on='bio_time').intzoop.mean())
+    monthlyzoop.reset_index(inplace=True)
+    jan_zoop=monthlyzoop.iloc[0]['intzoop']
+    feb_zoop=monthlyzoop.iloc[1]['intzoop']
+    mar_zoop=monthlyzoop.iloc[2]['intzoop']
+    return jan_zoop, feb_zoop, mar_zoop
+
+# depth integrated mesozooplankton concentration:
+def janfebmar_depth_intmesozoop(bio_time,intmesoz):
+    dfzoop=pd.DataFrame({'bio_time':bio_time, 'intmesoz':intmesoz})
+    monthlyzoop=pd.DataFrame(dfzoop.resample('M', on='bio_time').intmesoz.mean())
+    monthlyzoop.reset_index(inplace=True)
+    jan_zoop=monthlyzoop.iloc[0]['intmesoz']
+    feb_zoop=monthlyzoop.iloc[1]['intmesoz']
+    mar_zoop=monthlyzoop.iloc[2]['intmesoz']
+    return jan_zoop, feb_zoop, mar_zoop
+
+# depth integrated microzooplankton concentration:
+def janfebmar_depth_intmicrozoop(bio_time,intmicroz):
+    dfzoop=pd.DataFrame({'bio_time':bio_time, 'intmicroz':intmicroz})
+    monthlyzoop=pd.DataFrame(dfzoop.resample('M', on='bio_time').intmicroz.mean())
+    monthlyzoop.reset_index(inplace=True)
+    jan_zoop=monthlyzoop.iloc[0]['intmicroz']
+    feb_zoop=monthlyzoop.iloc[1]['intmicroz']
+    mar_zoop=monthlyzoop.iloc[2]['intmicroz']
+    return jan_zoop, feb_zoop, mar_zoop
+
+# mid depth nitrate (30-90m):
+def janfebmar_mid_depth_no3(bio_time,no3_30to90m):
+    dfno3=pd.DataFrame({'bio_time':bio_time, 'no3_30to90m':no3_30to90m})
+    monthlyno3=pd.DataFrame(dfno3.resample('M', on='bio_time').no3_30to90m.mean())
+    monthlyno3.reset_index(inplace=True)
+    jan_no3=monthlyno3.iloc[0]['no3_30to90m']
+    feb_no3=monthlyno3.iloc[1]['no3_30to90m']
+    mar_no3=monthlyno3.iloc[2]['no3_30to90m']
+    return jan_no3, feb_no3, mar_no3
