@@ -241,3 +241,14 @@ def janfebmar_mid_depth_no3(bio_time,no3_30to90m):
     feb_no3=monthlyno3.iloc[1]['no3_30to90m']
     mar_no3=monthlyno3.iloc[2]['no3_30to90m']
     return jan_no3, feb_no3, mar_no3
+
+# deep no3 in entire SoG (past 250m):
+def janfebmar_deepno3(riv_time,no3_past250m):
+    dfdeepno3=pd.DataFrame({'riv_time':riv_time, 'no3_past250m':no3_past250m})
+    dfdeepno3["riv_time"] = pd.to_datetime(dfdeepno3["riv_time"])
+    monthlydeepno3=pd.DataFrame(dfdeepno3.resample('M', on='riv_time').no3_past250m.mean())
+    monthlydeepno3.reset_index(inplace=True)
+    jan_deepno3=monthlydeepno3.iloc[0]['no3_past250m']
+    feb_deepno3=monthlydeepno3.iloc[1]['no3_past250m']
+    mar_deepno3=monthlydeepno3.iloc[2]['no3_past250m']
+    return jan_deepno3, feb_deepno3, mar_deepno3
