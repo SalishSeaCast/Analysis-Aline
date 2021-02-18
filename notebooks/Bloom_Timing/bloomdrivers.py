@@ -11,6 +11,19 @@ import pickle
 import os
 
 
+# Extracting winds from the correct path
+def getWindVarsYear(year):
+    if year>2014:
+        opsdir='/results/forcing/atmospheric/GEM2.5/operational/'
+        nam_fmt='ops'
+        jW,iW=places.PLACES['S3']['GEM2.5 grid ji']
+    else:
+        opsdir='/data/eolson/results/MEOPAR/GEMLAM/'
+        nam_fmt='gemlam'
+        jW=135
+        iW=145
+    return jW,iW,opsdir,nam_fmt
+
 # Metric 1:
 def metric1_bloomtime(phyto_alld,no3_alld,bio_time):
     # a) get avg phytplankton in upper 3m
