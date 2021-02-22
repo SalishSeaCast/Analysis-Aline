@@ -27,7 +27,7 @@ Descriptions under the links below are from the first cell of the notebooks
 
 * ## [201905EnvironmentalDrivers-Copy1.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/main/notebooks/Bloom_Timing/201905EnvironmentalDrivers-Copy1.ipynb)  
     
-    **Time Series of Phytoplankton Bloom Timing and Environmental Drivers from 2015-2019 at Station S3 (201905 model run)**
+    **Time Series of Phytoplankton Bloom Timing and Environmental Drivers from 2008-2019 at Station S3 (201905 model run)**
 
 * ## [201905EnvironmentalDrivers.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/main/notebooks/Bloom_Timing/201905EnvironmentalDrivers.ipynb)  
     
