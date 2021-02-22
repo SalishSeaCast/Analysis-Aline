@@ -19,12 +19,20 @@ Descriptions under the links below are from the first cell of the notebooks
     
     **Time Series of Phytoplankton Bloom Timing and Environmental Drivers from 2015-2019 at Station S3 (201812 model run)**
 
+* ## [201812EnvironmentalDrivers_beginning_EO.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/main/notebooks/Bloom_Timing/201812EnvironmentalDrivers_beginning_EO.ipynb)  
+    
 * ## [2018_S3_PhytoBloomTiming.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/main/notebooks/Bloom_Timing/2018_S3_PhytoBloomTiming.ipynb)  
     
     **Time series of spring phytoplankton bloom and model forcing at station S3 from Feb 15th - June 15th 2018**
 
 * ## [201905EnvironmentalDrivers-Copy1.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/main/notebooks/Bloom_Timing/201905EnvironmentalDrivers-Copy1.ipynb)  
     
+    **Time Series of Phytoplankton Bloom Timing and Environmental Drivers from 2015-2019 at Station S3 (201905 model run)**
+
+* ## [201905EnvironmentalDrivers.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/main/notebooks/Bloom_Timing/201905EnvironmentalDrivers.ipynb)  
+    
+    **Time Series of Phytoplankton Bloom Timing and Environmental Drivers from 2015-2019 at Station S3 (201905 model run)**
+
 * ## [2019_S3_PhytoBloomTiming.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/main/notebooks/Bloom_Timing/2019_S3_PhytoBloomTiming.ipynb)  
     
     **Time series of spring phytoplankton bloom and model forcing at station S3 from Feb 15th - June 15th 2019**
@@ -33,7 +41,9 @@ Descriptions under the links below are from the first cell of the notebooks
     
     **Time series of phytoplankton bloom dates from 2015-2019 at station S3**
 
-* ## [CopyEnvironmentalDrivers.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/main/notebooks/Bloom_Timing/CopyEnvironmentalDrivers.ipynb)  
+* ## [loadGEMLAMWinds.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/main/notebooks/Bloom_Timing/loadGEMLAMWinds.ipynb)  
+    
+* ## [vertical_eddy_dissipation.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/main/notebooks/Bloom_Timing/vertical_eddy_dissipation.ipynb)  
     
 
 ##License
