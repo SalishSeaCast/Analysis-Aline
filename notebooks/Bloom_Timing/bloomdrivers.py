@@ -259,9 +259,64 @@ def janfebmar_mid_depth_no3(bio_time,no3_30to90m):
 def janfebmar_deepno3(riv_time,no3_past250m):
     dfdeepno3=pd.DataFrame({'riv_time':riv_time, 'no3_past250m':no3_past250m})
     dfdeepno3["riv_time"] = pd.to_datetime(dfdeepno3["riv_time"])
-    monthlydeepno3=pd.DataFrame(dfdeepno3.resample('M', on='riv_time').no3_past250m.mean())
+    monthlydeepno3=pd.DataFrame(dfdeepno3.resample('M',on='riv_time').no3_past250m.mean())
     monthlydeepno3.reset_index(inplace=True)
     jan_deepno3=monthlydeepno3.iloc[0]['no3_past250m']
     feb_deepno3=monthlydeepno3.iloc[1]['no3_past250m']
     mar_deepno3=monthlydeepno3.iloc[2]['no3_past250m']
     return jan_deepno3, feb_deepno3, mar_deepno3
+
+def halo_de(ncname,ts_x,ts_y):
+    
+    ''' given a path to a SalishSeaCast netcdf file and an x, y pair, 
+        returns halocline depth, where halocline depth is defined a midway between 
+        two cells that have the largest salinity gradient
+        ie max abs((sal1-sal2)/(depth1-depth2))
+
+            Parameters:
+                    ncname (str): path to a netcdf file containing 
+                    a valid salinity variable (vosaline)
+                    ts_x (int): x-coordinate at which halocline is calculated
+                    tx_y (int): y-coordinate at which halocline is calculated
+            Returns:
+                    halocline_depth: depth in meters of maximum salinity gradient
+    '''
+    
+     # o
+        
+    halocline = 0
+    grid = nc.Dataset('/data/vdo/MEOPAR/NEMO-forcing/grid/mesh_mask201702.nc')
+    nemo = nc.Dataset(ncname)
+    
+    #get the land mask
+    col_mask = grid['tmask'][0,:,ts_y,ts_x] 
+    
+    #get the depths of the watercolumn and filter only cells that have water
+    col_depths = grid['gdept_0'][0,:,ts_y,ts_x]
+    col_depths = col_depths[col_mask==1] 
+
+### if there is no water, no halocline
+    if (len(col_depths) == 0):
+        halocline = np.nan
+    
+    else: 
+        #get the salinity of the point, again filtering for where water exists
+        col_sal = nemo['vosaline'][0,:,ts_y,ts_x]
+        col_sal = col_sal[col_mask==1]
+
+        #get the gradient in salinity
+        sal_grad = np.zeros_like(col_sal)
+
+        for i in range(0, (len(col_sal)-1)):
+            sal_grad[i] = np.abs((col_sal[i]-col_sal[i+1])/(col_depths[i]-col_depths[i+1]))
+
+        #print(sal_grad)
+
+        loc_max = np.where(sal_grad == np.nanmax(sal_grad))
+        loc_max = (loc_max[0][0])
+
+        #halocline is halfway between the two cells
+        halocline = col_depths[loc_max] + 0.5*(col_depths[loc_max+1]-col_depths[loc_max])
+
+    
+    return halocline
