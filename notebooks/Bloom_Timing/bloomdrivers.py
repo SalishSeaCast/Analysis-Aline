@@ -44,10 +44,11 @@ def metric1_bloomtime(phyto_alld,no3_alld,bio_time):
     metric1_df=pd.concat((bio_time_df,upper_3m_phyto,upper_3m_no3), axis=1)
     
     # c)  Find first location where nitrate crosses below 0.5 micromolar and 
-    #     stays there for 2 days (inlcuding the first day I'm assuming?)
+    #     stays there for 2 days 
+    # NOTE: changed the value to 2 micromolar
     for i, row in metric1_df.iterrows():
         try:
-            if metric1_df['upper_3m_no3'].iloc[i]<0.5 and metric1_df['upper_3m_no3'].iloc[i+1]<0.5:
+            if metric1_df['upper_3m_no3'].iloc[i]<2 and metric1_df['upper_3m_no3'].iloc[i+1]<2:
                 location1=i
                 break
         except IndexError:
@@ -320,3 +321,13 @@ def halo_de(ncname,ts_x,ts_y):
 
     
     return halocline
+
+# halocline time series:
+def janfebmar_halocline(bio_time,halocline):
+    dfhalo=pd.DataFrame({'bio_time':bio_time, 'halo':halocline})
+    monthlyhalo=pd.DataFrame(dfhalo.resample('M', on='bio_time').halo.mean())
+    monthlyhalo.reset_index(inplace=True)
+    jan_halo=monthlyhalo.iloc[0]['halo']
+    feb_halo=monthlyhalo.iloc[1]['halo']
+    mar_halo=monthlyhalo.iloc[2]['halo']
+    return jan_halo, feb_halo, mar_halo
