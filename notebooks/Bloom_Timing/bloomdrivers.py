@@ -331,3 +331,14 @@ def janfebmar_halocline(bio_time,halocline):
     feb_halo=monthlyhalo.iloc[1]['halo']
     mar_halo=monthlyhalo.iloc[2]['halo']
     return jan_halo, feb_halo, mar_halo
+
+# regression line and r2 value for plots
+def reg_r2(driver,bloomdate):
+    A = np.vstack([driver, np.ones(len(driver))]).T
+    m, c = np.linalg.lstsq(A, bloomdate,rcond=None)[0]
+    m=round(m,3)
+    c=round(c,2)
+    y = m*driver + c
+    model, resid = np.linalg.lstsq(A, bloomdate,rcond=None)[:2]
+    r2 = 1 - resid / (len(bloomdate) * np.var(bloomdate))
+    return y, r2, m, c
