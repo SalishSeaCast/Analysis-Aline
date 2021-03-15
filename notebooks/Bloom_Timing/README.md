@@ -27,7 +27,11 @@ Descriptions under the links below are from the first cell of the notebooks
 
 * ## [201905EnvironmentalDrivers.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/main/notebooks/Bloom_Timing/201905EnvironmentalDrivers.ipynb)  
     
-    **Time Series of Phytoplankton Bloom Timing and Environmental Drivers from 2015-2019 at Station S3 (201905 model run)**
+    **Time Series of Phytoplankton Bloom Timing and Environmental Drivers from 2007-2020 at Station S3 (201905 model run)**
+
+* ## [201905analysis.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/main/notebooks/Bloom_Timing/201905analysis.ipynb)  
+    
+    **Station S3 analysis**
 
 * ## [2019_S3_PhytoBloomTiming.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/main/notebooks/Bloom_Timing/2019_S3_PhytoBloomTiming.ipynb)  
     
@@ -41,6 +45,11 @@ Descriptions under the links below are from the first cell of the notebooks
     
 * ## [loadGEMLAMWinds.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/main/notebooks/Bloom_Timing/loadGEMLAMWinds.ipynb)  
     
+* ## [makePickles201905.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/main/notebooks/Bloom_Timing/makePickles201905.ipynb)  
+    
+    **Making pickle files for bloom timing vs. environmental driver analysis **
+    **(201905 only)**
+
 * ## [vertical_eddy_dissipation.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/main/notebooks/Bloom_Timing/vertical_eddy_dissipation.ipynb)  
     
 
