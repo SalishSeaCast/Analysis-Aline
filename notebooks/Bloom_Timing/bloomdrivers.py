@@ -9,7 +9,7 @@ import xarray as xr
 import pandas as pd
 import pickle
 import os
-
+import gsw
 
 # Extracting winds from the correct path
 def getWindVarsYear(year):
@@ -342,3 +342,82 @@ def reg_r2(driver,bloomdate):
     model, resid = np.linalg.lstsq(A, bloomdate,rcond=None)[:2]
     r2 = 1 - resid / (len(bloomdate) * np.var(bloomdate))
     return y, r2, m, c
+
+# depth of turbocline
+def turbo(eddy,time,depth):
+    turbo=list()
+    for day in eddy: 
+        dfed=pd.DataFrame({'depth':depth[:-1], 'eddy':day[1:]}) #do depth T instead of W, depth[:-1], then day[1:]
+        dfed=dfed.iloc[1:] # dropping surface values
+        dfed[:21] #keep top 21 (25m depth)
+        for i, row in dfed.iterrows():
+            try:
+                if dfed['eddy'].iloc[i]<0.001:
+                    turbo.append(dfed.at[i,'depth'])
+                    break
+            except IndexError:
+                turbo.append(np.nan)
+                print('turbocline depth not found')
+    dfturbo=pd.DataFrame({'time':time, 'turbo':turbo})
+    monthlyturbo=pd.DataFrame(dfturbo.resample('M', on='time').turbo.mean())
+    monthlyturbo.reset_index(inplace=True)
+    jan_turbo=monthlyturbo.iloc[0]['turbo']
+    feb_turbo=monthlyturbo.iloc[1]['turbo']
+    mar_turbo=monthlyturbo.iloc[2]['turbo']
+    return jan_turbo, feb_turbo, mar_turbo
+
+def density_diff(sal,temp,time):
+    p=0
+    depthrange={5:5,10:10,15:15,19:20,20:25,21:30}
+    density_diffs=dict()
+    for ind,depth in depthrange.items():
+        dsal=pd.DataFrame(sal)
+        #isal=np.array(dsal[[depth]]).flatten()
+        dtemp=pd.DataFrame(temp)
+        #itemp=np.array(dsal[[depth]]).flatten()
+        surfacedens=gsw.rho(dsal.iloc[:,0],dtemp.iloc[:,0],p)  # get the surface density
+        idens=gsw.rho(dsal.iloc[:,ind],dtemp.iloc[:,ind],p)  # get the density at that depth
+        densdiff=idens-surfacedens                               # get the dailiy desnity difference
+        df=pd.DataFrame({'time':time, 'densdiff':densdiff})  # average over months
+        monthlydiff=pd.DataFrame(df.resample('M', on='time').densdiff.mean())
+        monthlydiff.reset_index(inplace=True)
+        density_diffs[f'Jan {depth}m']=monthlydiff.iloc[0]['densdiff']
+        density_diffs[f'Feb {depth}m']=monthlydiff.iloc[1]['densdiff']
+        density_diffs[f'Mar {depth}m']=monthlydiff.iloc[2]['densdiff']
+    return density_diffs
+
+
+def avg_eddy(eddy,time,ij,ii):
+    k1=15 # 15m depth is index 15 (actual value is 15.096255)
+    k2=22 # 30m depth is index 22 (actual value is 31.101034)
+    with xr.open_dataset('/data/vdo/MEOPAR/NEMO-forcing/grid/mesh_mask201702.nc') as mesh:
+            tmask=np.array(mesh.tmask[0,:,ij,ii])
+            e3t_0=np.array(mesh.e3t_0[0,:,ij,ii])
+            e3t_k1=np.array(mesh.e3t_0[:,k1,ij,ii])
+            e3t_k2=np.array(mesh.e3t_0[:,k1,ij,ii])
+    # vertical sum of microzo in mmol/m3 * vertical grid thickness in m:
+    inteddy=list()
+    avgeddyk1=list()
+    avgeddyk2=list()
+    for dailyeddy in eddy:
+        eddy_tgrid=(dailyeddy[1:]+dailyeddy[:-1])
+        eddy_e3t=eddy_tgrid*e3t_0[:-1]
+        avgeddyk1.append(np.sum(eddy_e3t[:k1]*tmask[:k1])/np.sum(e3t_0[:k1]))
+        avgeddyk2.append(np.sum(eddy_e3t[:k2]*tmask[:k2])/np.sum(e3t_0[:k2]))
+
+    df=pd.DataFrame({'time':time, 'eddyk1':avgeddyk1,'eddyk2':avgeddyk2})
+    monthlyeddyk1=pd.DataFrame(df.resample('M', on='time').eddyk1.mean())
+    monthlyeddyk2=pd.DataFrame(df.resample('M', on='time').eddyk2.mean())
+    monthlyeddyk1.reset_index(inplace=True)
+    monthlyeddyk2.reset_index(inplace=True)
+    jan_eddyk1=monthlyeddyk1.iloc[0]['eddyk1']
+    feb_eddyk1=monthlyeddyk1.iloc[1]['eddyk1']
+    mar_eddyk1=monthlyeddyk1.iloc[2]['eddyk1']
+    jan_eddyk2=monthlyeddyk2.iloc[0]['eddyk2']
+    feb_eddyk2=monthlyeddyk2.iloc[1]['eddyk2']
+    mar_eddyk2=monthlyeddyk2.iloc[2]['eddyk2']
+    return jan_eddyk1, feb_eddyk1, mar_eddyk1,jan_eddyk2,feb_eddyk2,mar_eddyk2
+
+
+        
+
