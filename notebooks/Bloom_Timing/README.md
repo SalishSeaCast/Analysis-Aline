@@ -50,6 +50,10 @@ Descriptions under the links below are from the first cell of the notebooks
     **Making pickle files for bloom timing vs. environmental driver analysis **
     **(201905 only)**
 
+* ## [mixing201905_S3.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/main/notebooks/Bloom_Timing/mixing201905_S3.ipynb)  
+    
+    **Station S3 Bloom Timing Analysis - Mixing Factors**
+
 * ## [vertical_eddy_dissipation.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/main/notebooks/Bloom_Timing/vertical_eddy_dissipation.ipynb)  
     
 
