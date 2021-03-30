@@ -12,31 +12,38 @@ import os
 import gsw
 
 # Extracting winds from the correct path
-def getWindVarsYear(year):
+def getWindVarsYear(year,loc):
     ''' Given a year, returns the correct directory and nam_fmt for wind forcing as well as the
         location of S3 on the corresponding grid.
             Parameters:
                     year: a year value in integer form 
+                    loc: the location name as a string. Eg. loc='S3'
             Returns:
-                    jW: y-coordinate for location S3
-                    iW: x-coordinate for location S3
+                    jW: y-coordinate for the location
+                    iW: x-coordinate for the location
                 opsdir: path to directory where wind forcing file is stored
                nam_fmt: naming convention of the appropriate files
     '''
     if year>2014:
         opsdir='/results/forcing/atmospheric/GEM2.5/operational/'
         nam_fmt='ops'
-        jW,iW=places.PLACES['S3']['GEM2.5 grid ji']
+        jW,iW=places.PLACES[loc]['GEM2.5 grid ji']
     else:
         opsdir='/data/eolson/results/MEOPAR/GEMLAM/'
         nam_fmt='gemlam'
-        jW=135
-        iW=145
+        with xr.open_dataset('/results/forcing/atmospheric/GEM2.5/gemlam/gemlam_y2012m03d01.nc') as gridrefWind
+            # always use a post-2011 file here to identify station grid location
+            lon,lat=places.PLACES[loc]['lon lat']
+            jW,iW=geo_tools.find_closest_model_point(lon,lat,
+                    gridrefWind.variables['nav_lon'][:,:]-360,gridrefWind.variables['nav_lat'][:,:],
+                    grid='GEM2.5')
+                    # the -360 is needed because longitudes in this case are reported in postive degrees East
+
     return jW,iW,opsdir,nam_fmt
 
 # Metric 1:
 def metric1_bloomtime(phyto_alld,no3_alld,bio_time):
-    ''' Given datetime array and two 2D arrays of phytplankton and nitrate concentrations, over time
+    ''' Given datetime array and two 2D arrays of phytoplankton and nitrate concentrations, over time
         and depth, returns a datetime value of the spring phytoplankton bloom date according to the 
         following definition (now called 'metric 1'):
             
