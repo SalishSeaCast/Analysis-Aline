@@ -3,17 +3,17 @@ The links below are to static renderings of the notebooks via
 Descriptions under the links below are from the first cell of the notebooks
 (if that cell contains Markdown or raw text).
 
-* ## [Puget_WADE_Example_2009.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/master/notebooks/Examples/Puget_WADE_Example_2009.ipynb)  
+* ## [Puget_WADE_Example_2009.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/main/notebooks/Examples/Puget_WADE_Example_2009.ipynb)  
     
-* ## [modelAtmosForcingExample.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/master/notebooks/Examples/modelAtmosForcingExample.ipynb)  
+* ## [modelAtmosForcingExample.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/main/notebooks/Examples/modelAtmosForcingExample.ipynb)  
     
-* ## [plotModelOutputExamples.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/master/notebooks/Examples/plotModelOutputExamples.ipynb)  
+* ## [plotModelOutputExamples.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/main/notebooks/Examples/plotModelOutputExamples.ipynb)  
     
-* ## [plottingExample.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/master/notebooks/Examples/plottingExample.ipynb)  
+* ## [plottingExample.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/main/notebooks/Examples/plottingExample.ipynb)  
     
-* ## [timeseriesExamples-netCDF4.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/master/notebooks/Examples/timeseriesExamples-netCDF4.ipynb)  
+* ## [timeseriesExamples-netCDF4.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/main/notebooks/Examples/timeseriesExamples-netCDF4.ipynb)  
     
-* ## [timeseriesExamples-xarray.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/master/notebooks/Examples/timeseriesExamples-xarray.ipynb)  
+* ## [timeseriesExamples-xarray.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/main/notebooks/Examples/timeseriesExamples-xarray.ipynb)  
     
 
 ##License
