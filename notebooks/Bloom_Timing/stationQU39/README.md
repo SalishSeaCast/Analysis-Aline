@@ -11,6 +11,10 @@ Descriptions under the links below are from the first cell of the notebooks
     
     **Station QU39 analysis**
 
+* ## [bloom_func_check.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/main/notebooks/Bloom_Timing/stationQU39/bloom_func_check.ipynb)  
+    
+    Checking that metric 2 and 3 are doing the right thing.
+
 * ## [makePickles201905_QU39.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/main/notebooks/Bloom_Timing/stationQU39/makePickles201905_QU39.ipynb)  
     
     **Making pickle files for bloom timing vs. environmental driver analysis at QU39**
@@ -20,6 +24,8 @@ Descriptions under the links below are from the first cell of the notebooks
     
     **Station QU39 Bloom Timing Analysis - Mixing Factors**
 
+* ## [vertical_eddy_profiles_QU39.ipynb](https://nbviewer.jupyter.org/github/SalishSeaCast/Analysis-Aline/blob/main/notebooks/Bloom_Timing/stationQU39/vertical_eddy_profiles_QU39.ipynb)  
+    
 
 ##License
 
